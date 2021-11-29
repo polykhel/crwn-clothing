@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import './App.css';
 import Header from './components/header/header.component';
@@ -28,17 +28,16 @@ class App extends React.Component {
   componentWillUnmount() {
     this.unsubscribeFromAuth();
   }
+
   render() {
     return (
       <div>
-        <Header />
-        <BrowserRouter>
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route path="/shop" component={ShopPage} />
-            <Route path="/signin" component={SignInAndSignUpPage} />
-          </Switch>
-        </BrowserRouter>
+        <Header currentUser={this.state.currentUser} />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/shop" component={ShopPage} />
+          <Route path="/signin" component={SignInAndSignUpPage} />
+        </Switch>
       </div>
     );
   }
